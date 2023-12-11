@@ -44,7 +44,6 @@ h1 {
 }
 
 form {
-  width: 200px;
   padding: 20px;
   background-color: #750e40;
   width: 150vh;
@@ -85,6 +84,13 @@ button {
 
 button:hover {
   background-color: antiquewhite;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 600px) {
+  input {
+    width: 100%;
+  }
 }
 
 .correct-answer {
