@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Question Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Quiz Question Form</h1>
+
+    <form id="quizForm">
+      <label for="question">Question (max 140 characters):</label>
+      <input
+        type="text"
+        id="question"
+        name="question"
+        maxlength="140"
+        required
+      />
+
+      <label for="option1">Option 1:</label>
+      <input type="text" id="option1" name="options" required />
+
+      <label for="option2">Option 2:</label>
+      <input type="text" id="option2" name="options" required />
+
+      <label for="option3">Option 3:</label>
+      <input type="text" id="option3" name="options" required />
+
+      <label for="option4">Option 4:</label>
+      <input type="text" id="option4" name="options" required />
+
+      <label>Select Correct Answer:</label>
+      <input
+        type="radio"
+        id="correctOption1"
+        name="correctOption"
+        value="option1"
+        required
+      />
+      <label for="correctOption1">Option 1</label>
+
+      <input
+        type="radio"
+        id="correctOption2"
+        name="correctOption"
+        value="option2"
+      />
+      <label for="correctOption2">Option 2</label>
+
+      <input
+        type="radio"
+        id="correctOption3"
+        name="correctOption"
+        value="option3"
+      />
+      <label for="correctOption3">Option 3</label>
+
+      <input
+        type="radio"
+        id="correctOption4"
+        name="correctOption"
+        value="option4"
+      />
+      <label for="correctOption4">Option 4</label>
+
+      <div>
+        <label for="filterInput">Filter Questions:</label>
+        <input
+          type="text"
+          id="filterInput"
+          class="filter-input"
+          oninput="filterQuestions()"
+          placeholder="Search by question"
+        />
+      </div>
+
+      <button type="button" onclick="randomizeOptions()">
+        Randomize Options
+      </button>
+      <button type="button" onclick="saveQuestion()">Save Question</button>
+
+      <div id="question-list"></div>
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
