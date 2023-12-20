@@ -141,3 +141,35 @@ question-list {
   display: flex;
   margin-bottom: 10px;
 }
+
+.question-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+.player-score {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.player-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#player1-score,
+#player2-score {
+  width: 50px;
+  text-align: center;
+}
+
+#winner-message {
+  font-size: 18px;
+  font-weight: bold;
+  color: green;
+}
