@@ -1,175 +1,45 @@
-:root {
-  background-color: rgb(111, 66, 10);
-  font-size: 62.5%;
-  border-radius: 4px;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
-  color: #090808;
-  border-radius: 4px;
-}
-
-header {
-  text-align: center;
-  background-color: #2196f3;
-  color: whitesmoke;
-  padding: 10px;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-h1 {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin: 30px;
-  height: 40px;
-  border-radius: 4px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  font-size: 30px;
+  background-color: #214690;
   color: white;
 }
 
-form {
+#quiz-section {
+  width: 600px;
+  height: 250px;
+  background-color: #b91966;
+  border-radius: 10px;
   padding: 20px;
-  background-color: #750e40;
-  width: 150vh;
-  height: 2o0vh;
-  justify-content: center;
-  align-items: center;
-  max-width: 500px;
-  margin: 0 auto;
-  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+#player1,
+#player2 {
   font-size: 20px;
-  border-radius: 4px;
-  color: white;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  border-radius: 4px;
-}
-
-input[type="radio"] {
-  margin-right: 5px;
-}
-
-input,
-button {
-  width: 100%;
-  padding: 8px;
   margin-bottom: 10px;
 }
 
-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-button:hover {
-  background-color: antiquewhite;
-}
-
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 600px) {
-  input {
-    width: 100%;
-  }
-}
-
-.correct-answer {
-  background-color: #8fdb87; /* Green */
-}
-
-.wrong-answer {
-  background-color: #ff8f8f; /* Red */
-}
-
-question-list {
-  margin-top: 20px;
-}
-
-.reveal-button {
-  padding: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.filter-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  border-radius: 4px;
+.score-inputs {
   display: flex;
-  text-align: left;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
-.filter-input button {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.question-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.question {
-  margin-bottom: 10px;
-}
-
-.player-score {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.player-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-#player1-score,
-#player2-score {
+.score-inputs input {
   width: 50px;
   text-align: center;
 }
 
-#winner-message {
-  font-size: 18px;
-  font-weight: bold;
-  color: green;
+.score-buttons {
+  margin-top: 10px;
+}
+
+audio {
+  display: none;
 }

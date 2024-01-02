@@ -2,71 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Question Form</title>
+    <title>Quiz Game</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Quiz Question Form</h1>
-    <form id="quiz-form">
-      <label for="question">Question:</label>
-      <input type="text" id="question" maxlength="140" required />
+    <div id="quiz-section">
+      <h2>Quiz Game</h2>
 
-      <label for="option1">Option 1:</label>
-      <input type="text" id="option1" required />
+      <label for="player1Name">Player 1 Name:</label>
+      <input type="text" id="player1Name" placeholder="Enter name" />
 
-      <label for="option2">Option 2:</label>
-      <input type="text" id="option2" required />
+      <label for="player2Name">Player 2 Name:</label>
+      <input type="text" id="player2Name" placeholder="Enter name" />
 
-      <label for="option3">Option 3:</label>
-      <input type="text" id="option3" required />
-
-      <label for="option4">Option 4:</label>
-      <input type="text" id="option4" required />
-
-      <label for="correct-answer">Correct Answer:</label>
-      <select id="correct-answer" required>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-      </select>
-
-      <button type="button" onclick="addQuestion()">Add Question</button>
-
-      <div>
-        <h2>Quiz Questions</h2>
-        <ul id="question-list" class="question-list"></ul>
-        <button onclick="revealAnswers()">Reveal Answers</button>
-      </div>
-
-      <div>
-        <h2>Players</h2>
-        <div class="player-score">
-          <div>
-            Player 1: <span id="player1-score">0</span> points
-            <div class="player-buttons">
-              <button onclick="updateScore('player1', 'correct')">
-                Correct
-              </button>
-              <button onclick="updateScore('player1', 'wrong')">Wrong</button>
-            </div>
-          </div>
-          <div>
-            Player 2: <span id="player2-score">0</span> points
-            <div class="player-buttons">
-              <button onclick="updateScore('player2', 'correct')">
-                Correct
-              </button>
-              <button onclick="updateScore('player2', 'wrong')">Wrong</button>
-            </div>
-          </div>
+      <div class="score-inputs">
+        <div>
+          <label for="player1Points">Player 1 Points:</label>
+          <input type="number" id="player1Points" value="0" min="0" />
         </div>
-        <div id="winner-message" style="text-align: center"></div>
+        <div>
+          <label for="player2Points">Player 2 Points:</label>
+          <input type="number" id="player2Points" value="0" min="0" />
+        </div>
       </div>
-    </form>
 
-    <script src="script.js"></script>
+      <button onclick="startQuiz()">Start Quiz</button>
+
+      <div id="player1"></div>
+      <div id="player2"></div>
+
+      <div class="score-buttons">
+        <button onclick="updateScore(1, true)">Player 1 Correct</button>
+        <button onclick="updateScore(1, false)">Player 1 Wrong</button>
+      </div>
+
+      <div class="score-buttons">
+        <button onclick="updateScore(2, true)">Player 2 Correct</button>
+        <button onclick="updateScore(2, false)">Player 2 Wrong</button>
+      </div>
+
+      <audio
+        id="correctSound"
+        src="https://www.soundjay.com/button/sounds/button-10.mp3"
+        preload="auto"
+      ></audio>
+      <audio
+        id="wrongSound"
+        src="https://www.soundjay.com/button/sounds/button-09.mp3"
+        preload="auto"
+      ></audio>
+    </div>
   </body>
 </html>

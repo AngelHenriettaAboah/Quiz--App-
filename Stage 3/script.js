@@ -1,81 +1,58 @@
-const quizForm = document.getElementById("quiz-form");
-const questionList = document.getElementById("question-list");
-const player1Score = document.getElementById("player1-score");
-const player2Score = document.getElementById("player2-score");
-const winnerMessage = document.getElementById("winner-message");
+let player1Score = 0;
+let player2Score = 0;
 
-let questions = [];
-let player1Points = 0;
-let player2Points = 0;
+function startQuiz() {
+  const player1Name = document.getElementById("player1Name").value;
+  const player2Name = document.getElementById("player2Name").value;
 
-function addQuestion() {
-  const question = document.getElementById("question").value;
-  const option1 = document.getElementById("option1").value;
-  const option2 = document.getElementById("option2").value;
-  const option3 = document.getElementById("option3").value;
-  const option4 = document.getElementById("option4").value;
-  const correctAnswer = document.getElementById("correct-answer").value;
-
-  const newQuestion = {
-    question,
-    options: [option1, option2, option3, option4],
-    correctAnswer,
-  };
-
-  questions.push(newQuestion);
-  renderQuestions();
-  quizForm.reset();
+  document.getElementById(
+    "player1"
+  ).textContent = `${player1Name}: ${player1Score} points`;
+  document.getElementById(
+    "player2"
+  ).textContent = `${player2Name}: ${player2Score} points`;
 }
 
-function renderQuestions() {
-  questionList.innerHTML = "";
-  questions.forEach((q, index) => {
-    const listItem = document.createElement("li");
-    listItem.classList.add("question");
-    listItem.textContent = `Q${index + 1}: ${q.question}`;
-    questionList.appendChild(listItem);
-  });
-}
+function updateScore(playerNumber, isCorrect) {
+  const player1PointsInput = document.getElementById("player1Points");
+  const player2PointsInput = document.getElementById("player2Points");
 
-function revealAnswers() {
-  questions.forEach((q, index) => {
-    const correctAnswerIndex = parseInt(q.correctAnswer) - 1;
-    const options = [...q.options];
-    const correctOption = options[correctAnswerIndex];
-
-    options.sort(() => Math.random() - 0.5);
-
-    const listItem = questionList.children[index];
-    listItem.textContent = `Q${index + 1}: ${
-      q.question
-    } - Options: ${options.join(", ")} | Correct Answer: ${correctOption}`;
-  });
-}
-
-function updateScore(player, action) {
-  if (player === "player1") {
-    if (action === "correct") {
-      player1Points++;
+  if (playerNumber === 1) {
+    if (isCorrect) {
+      player1Score += 1;
     } else {
-      player2Points++;
+      player2Score += 1;
     }
-  } else {
-    if (action === "correct") {
-      player2Points++;
+    player1PointsInput.value = player1Score;
+  } else if (playerNumber === 2) {
+    if (isCorrect) {
+      player2Score += 1;
     } else {
-      player1Points++;
+      player1Score += 1;
     }
+    player2PointsInput.value = player2Score;
   }
 
-  player1Score.textContent = player1Points;
-  player2Score.textContent = player2Points;
+  document.getElementById(
+    "player1"
+  ).textContent = `Player 1: ${player1Score} points`;
+  document.getElementById(
+    "player2"
+  ).textContent = `Player 2: ${player2Score} points`;
 
-  if (player1Points === 10 || player2Points === 10) {
-    endGame();
+  playSound(isCorrect ? "correctSound" : "wrongSound");
+
+  if (player1Score === 10 || player2Score === 10) {
+    endQuiz();
   }
 }
 
-function endGame() {
-  const winner = player1Points === 10 ? "Player 1" : "Player 2";
-  winnerMessage.textContent = `${winner} wins the game!`;
+function endQuiz() {
+  alert("Quiz Ended!");
+}
+
+function playSound(soundId) {
+  const sound = document.getElementById(soundId);
+  sound.currentTime = 0;
+  sound.play();
 }
