@@ -12,6 +12,31 @@ const player2 = {
   scoreDisplay: document.getElementById("score2"),
 };
 
+function randomizeOptions() {
+  const options = document.querySelectorAll('[name="options"]');
+  const optionsArray = Array.from(options);
+
+  optionsArray.sort(() => Math.random() - 0.5);
+
+  optionsArray.forEach((option, index) => {
+    option.value = `Random Option ${index + 1}`;
+  });
+}
+
+function saveQuestion() {
+  const question = {
+    question: document.getElementById("question").value,
+    options: Array.from(document.querySelectorAll('[name="options"]')).map(
+      (option) => option.value
+    ),
+    correctOption: document.querySelector('[name="correctOption"]:checked')
+      ?.value,
+  };
+
+  question.push(question);
+  renderQuestionList();
+}
+
 function addQuestion() {
   const question = document.getElementById("question").value;
   const option1 = document.getElementById("option1").value;
