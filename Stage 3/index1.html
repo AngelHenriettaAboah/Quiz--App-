@@ -7,40 +7,82 @@
     <link rel="stylesheet" href="style1.css" />
   </head>
   <body>
-    <div id="quiz-section">
-      <h2>Quiz Game</h2>
+    <h2
+      style="
+        color: white;
+        margin-top: none;
+        margin-bottom: 600px;
+        text-align: center;
+        align-items: center;
+        position: fixed;
+      "
+    >
+      Create a Quiz Question
+    </h2>
 
-      <label for="player1Name">Player 1 Name:</label>
-      <input type="text" id="player1Name" placeholder="Enter name" />
+    <form id="questionForm">
+      <label for="question">Question</label>
+      <input type="text" id="question" class="question" required />
 
-      <label for="player2Name">Player 2 Name:</label>
-      <input type="text" id="player2Name" placeholder="Enter name" />
+      <label for="option1">Option 1</label>
+      <input type="text" id="option1" class="option" required />
 
-      <div class="score-inputs">
-        <div>
-          <label for="player1Points">Player 1 Points:</label>
-          <input type="number" id="player1Points" value="0" min="0" />
+      <label for="option2">Option 2</label>
+      <input type="text" id="option2" class="option" required />
+
+      <label for="option3">Option 3</label>
+      <input type="text" id="option3" class="option" required />
+
+      <label for="option4">Option 4</label>
+      <input type="text" id="option4" class="option" required />
+
+      <select id="correctOption" required>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+      </select>
+      <label for="correctOption">Correct Option</label>
+      <button type="button" onclick="addQuestion()">Add Question</button>
+    </form>
+
+    <div id="player-section">
+      <h2 style="color: white">Player Section</h2>
+      <input type="text" id="player1Name" placeholder="Player 1 Name" />
+      <input type="text" id="player2Name" placeholder="Player 2 Name" />
+      <button type="button" onclick="startQuiz()">Start Quiz</button>
+
+      <div id="players">
+        <div id="player1" style="color: white">
+          Player 1: <span id="score1" style="color: white">0</span>
+          <button onclick="updateScore(1, true)">Correct</button>
+          <button onclick="updateScore(1, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput1"
+            value="0"
+            min="0"
+            max="10"
+          />
         </div>
-        <div>
-          <label for="player2Points">Player 2 Points:</label>
-          <input type="number" id="player2Points" value="0" min="0" />
+
+        <div id="player2" style="color: white">
+          Player 2: <span id="score2" style="color: white">0</span>
+          <button onclick="updateScore(2, true)">Correct</button>
+          <button onclick="updateScore(2, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput2"
+            value="0"
+            min="0"
+            max="10"
+          />
         </div>
       </div>
 
-      <button onclick="startQuiz()">Start Quiz</button>
-
-      <div id="player1"></div>
-      <div id="player2"></div>
-
-      <div class="score-buttons">
-        <button onclick="updateScore(1, true)">Player 1 Correct</button>
-        <button onclick="updateScore(1, false)">Player 1 Wrong</button>
-      </div>
-
-      <div class="score-buttons">
-        <button onclick="updateScore(2, true)">Player 2 Correct</button>
-        <button onclick="updateScore(2, false)">Player 2 Wrong</button>
-      </div>
+      <div id="quiz-end">Quiz Ended! <span id="winner"></span></div>
 
       <audio
         id="correctSound"
@@ -53,5 +95,6 @@
         preload="auto"
       ></audio>
     </div>
+    <script src="script1.js"></script>
   </body>
 </html>

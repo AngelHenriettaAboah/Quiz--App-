@@ -1,54 +1,118 @@
-let player1Score = 0;
-let player2Score = 0;
+const questionsArray = [];
+const player1 = {
+  name: "",
+  score: 0,
+  input: document.getElementById("scoreInput1"),
+  scoreDisplay: document.getElementById("score1"),
+};
+const player2 = {
+  name: "",
+  score: 0,
+  input: document.getElementById("scoreInput2"),
+  scoreDisplay: document.getElementById("score2"),
+};
+
+function addQuestion() {
+  const question = document.getElementById("question").value;
+  const option1 = document.getElementById("option1").value;
+  const option2 = document.getElementById("option2").value;
+  const option3 = document.getElementById("option3").value;
+  const option4 = document.getElementById("option4").value;
+  const correctOption = parseInt(
+    document.getElementById("correctOption").value
+  );
+
+  const newQuestion = {
+    question,
+    options: [option1, option2, option3, option4],
+    correctOption,
+  };
+
+  questionsArray.push(newQuestion);
+  updateQuestionList();
+  document.getElementById("questionForm").reset();
+}
+
+function updateQuestionList() {
+  const questionList = document.getElementById("questionList");
+  questionList.innerHTML = "";
+
+  questionsArray.forEach((q, index) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `Q${index + 1}: ${q.question}`;
+    questionList.appendChild(listItem);
+  });
+}
 
 function startQuiz() {
-  const player1Name = document.getElementById("player1Name").value;
-  const player2Name = document.getElementById("player2Name").value;
+  const player1Name = document.getElementById("player1Name").value.trim();
+  const player2Name = document.getElementById("player2Name").value.trim();
 
-  document.getElementById(
-    "player1"
-  ).textContent = `${player1Name}: ${player1Score} points`;
-  document.getElementById(
-    "player2"
-  ).textContent = `${player2Name}: ${player2Score} points`;
+  if (player1Name === "" || player2Name === "") {
+    alert("Please enter names for both players.");
+    return;
+  }
+
+  player1.name = player1Name;
+  player2.name = player2Name;
+
+  document.getElementById("player1").textContent = `${player1.name}: `;
+  document.getElementById("player2").textContent = `${player2.name}: `;
+
+  document.getElementById("player1Name").disabled = true;
+  document.getElementById("player2Name").disabled = true;
+
+  document.getElementById("player-section").style.background = "#5cb85c";
+
+  document.getElementById("quiz-end").style.display = "none";
+
+  player1.score = 0;
+  player2.score = 0;
+  player1.input.value = 0;
+  player2.input.value = 0;
+  player1.scoreDisplay.textContent = player1.score;
+  player2.scoreDisplay.textContent = player2.score;
+
+  document.getElementById("scoreInput1").disabled = false;
+  document.getElementById("scoreInput2").disabled = false;
 }
 
 function updateScore(playerNumber, isCorrect) {
-  const player1PointsInput = document.getElementById("player1Points");
-  const player2PointsInput = document.getElementById("player2Points");
+  const currentPlayer = playerNumber === 1 ? player1 : player2;
+  const otherPlayer = playerNumber === 1 ? player2 : player1;
 
-  if (playerNumber === 1) {
-    if (isCorrect) {
-      player1Score += 1;
-    } else {
-      player2Score += 1;
-    }
-    player1PointsInput.value = player1Score;
-  } else if (playerNumber === 2) {
-    if (isCorrect) {
-      player2Score += 1;
-    } else {
-      player1Score += 1;
-    }
-    player2PointsInput.value = player2Score;
+  if (isCorrect) {
+    currentPlayer.score += 1;
+    currentPlayer.input.value = currentPlayer.score;
+    currentPlayer.scoreDisplay.textContent = currentPlayer.score;
+
+    playSound("correctSound");
+  } else {
+    otherPlayer.score += 1;
+    otherPlayer.input.value = otherPlayer.score;
+    otherPlayer.scoreDisplay.textContent = otherPlayer.score;
+
+    playSound("wrongSound");
   }
 
-  document.getElementById(
-    "player1"
-  ).textContent = `Player 1: ${player1Score} points`;
-  document.getElementById(
-    "player2"
-  ).textContent = `Player 2: ${player2Score} points`;
-
-  playSound(isCorrect ? "correctSound" : "wrongSound");
-
-  if (player1Score === 10 || player2Score === 10) {
+  if (currentPlayer.score === 10 || otherPlayer.score === 10) {
     endQuiz();
   }
 }
 
 function endQuiz() {
-  alert("Quiz Ended!");
+  document.getElementById("quiz-end").style.display = "block";
+
+  const winner =
+    player1.score === 10
+      ? player1.name
+      : player2.score === 10
+      ? player2.name
+      : "No one";
+  document.getElementById("winner").textContent = `${winner} Wins!`;
+
+  document.getElementById("scoreInput1").disabled = true;
+  document.getElementById("scoreInput2").disabled = true;
 }
 
 function playSound(soundId) {
