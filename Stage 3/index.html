@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="quiz-section">
+      <h2>Quiz Game</h2>
+
+      <label for="player1Name">Player 1 Name:</label>
+      <input type="text" id="player1Name" placeholder="Enter name" />
+
+      <label for="player2Name">Player 2 Name:</label>
+      <input type="text" id="player2Name" placeholder="Enter name" />
+
+      <div class="score-inputs">
+        <div>
+          <label for="player1Points">Player 1 Points:</label>
+          <input type="number" id="player1Points" value="0" min="0" />
+        </div>
+        <div>
+          <label for="player2Points">Player 2 Points:</label>
+          <input type="number" id="player2Points" value="0" min="0" />
+        </div>
+      </div>
+
+      <button onclick="startQuiz()">Start Quiz</button>
+
+      <div id="player1"></div>
+      <div id="player2"></div>
+
+      <div class="score-buttons">
+        <button onclick="updateScore(1, true)">Player 1 Correct</button>
+        <button onclick="updateScore(1, false)">Player 1 Wrong</button>
+      </div>
+
+      <div class="score-buttons">
+        <button onclick="updateScore(2, true)">Player 2 Correct</button>
+        <button onclick="updateScore(2, false)">Player 2 Wrong</button>
+      </div>
+
+      <audio
+        id="correctSound"
+        src="https://www.soundjay.com/button/sounds/button-10.mp3"
+        preload="auto"
+      ></audio>
+      <audio
+        id="wrongSound"
+        src="https://www.soundjay.com/button/sounds/button-09.mp3"
+        preload="auto"
+      ></audio>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <h2
+      style="
+        color: white;
+        margin-top: none;
+        margin-bottom: 750px;
+        text-align: left;
+        align-items: center;
+        position: fixed;
+      "
+    >
+      Quiz Game
+    </h2>
+
+    <form id="questionForm">
+      <label for="question">Question</label>
+      <input type="text" id="question" class="question" required />
+
+      <label for="option1">Option 1</label>
+      <input type="text" id="option1" class="option" required />
+
+      <label for="option2">Option 2</label>
+      <input type="text" id="option2" class="option" required />
+
+      <label for="option3">Option 3</label>
+      <input type="text" id="option3" class="option" required />
+
+      <label for="option4">Option 4</label>
+      <input type="text" id="option4" class="option" required />
+
+      <select id="correctOption" required>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+      </select>
+      <label for="correctOption">Correct Option</label>
+
+      <button type="button" onclick="randomizeOptions()">
+        Randomize Options
+      </button>
+      <button type="button" onclick="saveQuestion()">Save Question</button>
+
+      <div id="question-list"></div>
+
+      <input type="submit" value="Submit" style="font-size: 20px" />
+
+      <button type="button" onclick="addQuestion()">Question</button>
+    </form>
+
+    <div id="player-section">
+      <h2 style="color: white">Player Section</h2>
+      <input type="text" id="player1Name" placeholder="Player 1 Name" />
+      <input type="text" id="player2Name" placeholder="Player 2 Name" />
+      <button type="button" onclick="startQuiz()">Start Quiz</button>
+
+      <div id="players">
+        <div id="player1" style="color: white; display: none">
+          <span id="player1name" style="color: white">...</span>
+          <span id="score1" style="color: white">0</span>
+          <button onclick="updateScore(1, true)">Correct</button>
+          <button onclick="updateScore(1, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput1"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+
+        <div id="player2" style="color: white; display: none">
+          <span id="player2name" style="color: white"></span>
+          <span id="score2" style="color: white">0</span>
+          <button onclick="updateScore(2, true)">Correct</button>
+          <button onclick="updateScore(2, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput2"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+      </div>
+
+      <div id="quiz-end">Quiz Ended! <span id="winner"></span></div>
+
+      <audio
+        id="correctSound"
+        src="https://www.soundjay.com/button/sounds/button-10.mp3"
+        preload="auto"
+      ></audio>
+      <audio
+        id="wrongSound"
+        src="https://www.soundjay.com/button/sounds/button-09.mp3"
+        preload="auto"
+      ></audio>
+    </div>
+    <script src="script1.js"></script>
+  </body>
+</html>
