@@ -63,8 +63,9 @@
       <button type="button" onclick="startQuiz()">Start Quiz</button>
 
       <div id="players">
-        <div id="player1" style="color: white">
-          Player 1: <span id="score1" style="color: white">0</span>
+        <div id="player1" style="color: white; display: none">
+          <span id="player1name" style="color: white">...</span>
+          <span id="score1" style="color: white">0</span>
           <button onclick="updateScore(1, true)">Correct</button>
           <button onclick="updateScore(1, false)">Wrong</button>
           <input
@@ -77,8 +78,9 @@
           />
         </div>
 
-        <div id="player2" style="color: white">
-          Player 2: <span id="score2" style="color: white">0</span>
+        <div id="player2" style="color: white; display: none">
+          <span id="player2name" style="color: white"></span>
+          <span id="score2" style="color: white">0</span>
           <button onclick="updateScore(2, true)">Correct</button>
           <button onclick="updateScore(2, false)">Wrong</button>
           <input

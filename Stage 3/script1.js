@@ -37,6 +37,52 @@ function saveQuestion() {
   renderQuestionList();
 }
 
+function renderQuestionList() {
+  const questionListContainer = document.getElementById("question-list");
+  questionListContainer.innerHTML = "";
+
+  questions.forEach((question, index) => {
+    const questionDiv = document.createElement("div");
+    questionDiv.innerHTML = `
+            <p>${question.question}</p>
+            <ul>
+                ${question.options
+                  .map((option) => `<li>${option}</li>`)
+                  .join("")}
+            </ul>
+            <button onclick="revealCorrectAnswers(${index})">Reveal Correct Answer</button>
+        `;
+    questionListContainer.appendChild(questionDiv);
+  });
+}
+
+function filterQuestions() {
+  const filterInput = document.getElementById("filterInput");
+  const filteredQuestions = questions.filter((question) =>
+    question.question.toLowerCase().includes(filterInput.value.toLowerCase())
+  );
+  renderFilteredQuestions(filteredQuestions);
+}
+
+function renderFilteredQuestions(filteredQuestions) {
+  const questionListContainer = document.getElementById("question-list");
+  questionListContainer.innerHTML = "";
+
+  filteredQuestions.forEach((question, index) => {
+    const questionDiv = document.createElement("div");
+    questionDiv.innerHTML = `
+            <p class="filter-text">${question.question}</p>
+            <ul>
+                ${question.options
+                  .map((option) => `<li class="filter-text">${option}</li>`)
+                  .join("")}
+            </ul>
+            <button class="reveal-button" onclick="revealCorrectAnswers(${index})">Reveal Correct Answer</button>
+        `;
+    questionListContainer.appendChild(questionDiv);
+  });
+}
+
 function addQuestion() {
   const question = document.getElementById("question").value;
   const option1 = document.getElementById("option1").value;
@@ -81,8 +127,10 @@ function startQuiz() {
   player1.name = player1Name;
   player2.name = player2Name;
 
-  document.getElementById("player1").textContent = `${player1.name}: `;
-  document.getElementById("player2").textContent = `${player2.name}: `;
+  document.getElementById("player1name").textContent = `${player1.name}: `;
+  document.getElementById("player1").style.display = "block";
+  document.getElementById("player2name").textContent = `${player2.name}: `;
+  document.getElementById("player2").style.display = "block";
 
   document.getElementById("player1Name").disabled = true;
   document.getElementById("player2Name").disabled = true;
