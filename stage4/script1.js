@@ -12,74 +12,14 @@ const player2 = {
   scoreDisplay: document.getElementById("score2"),
 };
 
-function randomizeOptions() {
-  const options = document.querySelectorAll('[name="options"]');
-  const optionsArray = Array.from(options);
+function updateQuestionList() {
+  const questionList = document.getElementById("questionList");
+  questionList.innerHTML = "";
 
-  optionsArray.sort(() => Math.random() - 0.5);
-
-  optionsArray.forEach((option, index) => {
-    option.value = `Random Option ${index + 1}`;
-  });
-}
-
-function saveQuestion() {
-  const question = {
-    question: document.getElementById("question").value,
-    options: Array.from(document.querySelectorAll('[name="options"]')).map(
-      (option) => option.value
-    ),
-    correctOption: document.querySelector('[name="correctOption"]:checked')
-      ?.value,
-  };
-
-  question.push(question);
-  renderQuestionList();
-}
-
-function renderQuestionList() {
-  const questionListContainer = document.getElementById("question-list");
-  questionListContainer.innerHTML = "";
-
-  questions.forEach((question, index) => {
-    const questionDiv = document.createElement("div");
-    questionDiv.innerHTML = `
-            <p>${question.question}</p>
-            <ul>
-                ${question.options
-                  .map((option) => `<li>${option}</li>`)
-                  .join("")}
-            </ul>
-            <button onclick="revealCorrectAnswers(${index})">Reveal Correct Answer</button>
-        `;
-    questionListContainer.appendChild(questionDiv);
-  });
-}
-
-function filterQuestions() {
-  const filterInput = document.getElementById("filterInput");
-  const filteredQuestions = questions.filter((question) =>
-    question.question.toLowerCase().includes(filterInput.value.toLowerCase())
-  );
-  renderFilteredQuestions(filteredQuestions);
-}
-
-function renderFilteredQuestions(filteredQuestions) {
-  const questionListContainer = document.getElementById("question-list");
-  questionListContainer.innerHTML = "";
-
-  filteredQuestions.forEach((question, index) => {
-    const questionDiv = document.createElement("div");
-    questionDiv.innerHTML = `
-            <p class="filter-text">${question.question}</p>
-            <ul>
-                ${question.options
-                  .map((option) => `<li class="filter-text">${option}</li>`)
-                  .join("")}
-            </ul>
-            <button class="reveal-button" onclick="revealCorrectAnswers(${index})">Reveal Correct Answer</button>
-        `;
-    questionListContainer.appendChild(questionDiv);
+  questionsArray.forEach((q, index) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `Q${index + 1}: ${q.question}`;
+    questionList.appendChild(listItem);
   });
 }
 
@@ -89,29 +29,44 @@ function addQuestion() {
   const option2 = document.getElementById("option2").value;
   const option3 = document.getElementById("option3").value;
   const option4 = document.getElementById("option4").value;
-  const correctOption = parseInt(
-    document.getElementById("correctOption").value
-  );
+  const correctAnswer = document.getElementById("correctAnswer").value;
 
-  const newQuestion = {
+  const quizItem = {
     question,
     options: [option1, option2, option3, option4],
-    correctOption,
+    correctAnswer,
   };
 
-  questionsArray.push(newQuestion);
-  updateQuestionList();
-  document.getElementById("questionForm").reset();
+  quizQuestions.push(quizItem);
+  displayQuestions();
 }
 
-function updateQuestionList() {
-  const questionList = document.getElementById("questionList");
-  questionList.innerHTML = "";
+function displayQuestions() {
+  const quizList = document.getElementById("quizList");
+  quizList.innerHTML = "";
 
-  questionsArray.forEach((q, index) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = `Q${index + 1}: ${q.question}`;
-    questionList.appendChild(listItem);
+  quizQuestions.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "quiz-item";
+
+    const questionText = document.createElement("p");
+    questionText.textContent = `Q${index + 1}: ${item.question}`;
+    div.appendChild(questionText);
+
+    const optionsList = document.createElement("ul");
+    item.options.forEach((option, optionIndex) => {
+      const li = document.createElement("li");
+      li.textContent = `Option ${optionIndex + 1}: ${option}`;
+      if (optionIndex + 1 === parseInt(item.correctAnswer.slice(-1))) {
+        li.className = "correct-answer";
+      } else {
+        li.className = "wrong-answer";
+      }
+      optionsList.appendChild(li);
+    });
+    div.appendChild(optionsList);
+
+    quizList.appendChild(div);
   });
 }
 
@@ -195,7 +150,9 @@ function playSound(soundId) {
 }
 
 // Fetch initial questions data from API
-fetch("https://jsonplaceholder.typicode.com/todos")
+fetch(
+  "https://raw.githubusercontent.com/AngelHenriettaAboah/AngelHenriettaAboah.github.io/main/json-api/data.json"
+)
   .then((response) => response.json())
   .then((data) => {
     // Extract only the title field for simplicity

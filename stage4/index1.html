@@ -44,16 +44,13 @@
       </select>
       <label for="correctOption">Correct Option</label>
 
-      <button type="button" onclick="randomizeOptions()">
-        Randomize Options
-      </button>
-      <button type="button" onclick="saveQuestion()">Save Question</button>
-
       <div id="question-list"></div>
 
       <input type="submit" value="Submit" style="font-size: 20px" />
 
-      <button type="button" onclick="addQuestion()">Question</button>
+      <button type="button" onclick="addQuestion()" style="display: none">
+        Add Question
+      </button>
       <button type="button" onclick="randomSort()">Random Sort</button>
       <button type="button" onclick="alphabeticalSort()">
         Alphabetical Sort
@@ -102,12 +99,12 @@
 
       <audio
         id="correctSound"
-        src="https://www.soundjay.com/button/sounds/button-10.mp3"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a"
         preload="auto"
       ></audio>
       <audio
         id="wrongSound"
-        src="https://www.soundjay.com/button/sounds/button-09.mp3"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a"
         preload="auto"
       ></audio>
     </div>
