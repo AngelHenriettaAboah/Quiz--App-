@@ -1,4 +1,4 @@
-const questionsArray = [];
+let questionsArray = [];
 const player1 = {
   name: "",
   score: 0,
@@ -29,7 +29,7 @@ function addQuestion() {
   const option2 = document.getElementById("option2").value;
   const option3 = document.getElementById("option3").value;
   const option4 = document.getElementById("option4").value;
-  const correctAnswer = document.getElementById("correctAnswer").value;
+  const correctAnswer = document.getElementById("correctOption").value;
 
   const quizItem = {
     question,
@@ -37,7 +37,7 @@ function addQuestion() {
     correctAnswer,
   };
 
-  quizQuestions.push(quizItem);
+  questionsArray.push(quizItem);
   displayQuestions();
 }
 
@@ -45,7 +45,7 @@ function displayQuestions() {
   const quizList = document.getElementById("quizList");
   quizList.innerHTML = "";
 
-  quizQuestions.forEach((item, index) => {
+  questionsArray.forEach((item, index) => {
     const div = document.createElement("div");
     div.className = "quiz-item";
 
@@ -68,6 +68,19 @@ function displayQuestions() {
 
     quizList.appendChild(div);
   });
+}
+
+function filterQuestions() {
+  const searchInput = document
+    .getElementById("searchInput")
+    .value.toLowerCase();
+  console.log(questionsArray);
+  const filteredQuestions = questionsArray.filter((item) =>
+    item.question.toLowerCase().includes(searchInput)
+  );
+  questionsArray.length = 0;
+  questionsArray.push(...filteredQuestions);
+  displayQuestions(); //optional parameter could be empty or filled for example filteredQuestion//
 }
 
 function startQuiz() {
@@ -156,25 +169,42 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     // Extract only the title field for simplicity
-    quizQuestions = data.map((item) => ({
-      question: item.title,
-      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-      correctAnswer: "option1",
+    questionsArray = data.map((item) => ({
+      question: item.question,
+      options: item.options.map((opt) => opt.option),
+      correctAnswer: item.correctAnswer,
     }));
     displayQuestions();
   })
   .catch((error) =>
-    console.error("Error fetching initial questions data:", error)
+    console.log("Error fetching initial questions data:", error)
   );
 
 // Randomly sort the questions
 function randomSort() {
-  quizQuestions.sort(() => Math.random() - 0.5);
+  questionsArray.sort(() => Math.random() - 0.5);
   displayQuestions();
 }
 
 // Sort the questions alphabetically
 function alphabeticalSort() {
-  quizQuestions.sort((a, b) => a.question.localeCompare(b.question));
+  questionsArray.sort((a, b) => a.question.localeCompare(b.question));
   displayQuestions();
+}
+
+async function fetchQuestions() {
+  try {
+    let response = await fetch(
+      "https://raw.githubusercontent.com/AngelHenriettaAboah/AngelHenriettaAboah.github.io/main/json-api/data.json"
+    );
+    let data = await response.json();
+    return data.map((item) => ({
+      question: item.question,
+      options: item.options.map((opt) => opt.option),
+      correctAnswer: item.correctAnswer,
+    }));
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+    return [];
+  }
 }

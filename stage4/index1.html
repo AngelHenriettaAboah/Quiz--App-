@@ -43,18 +43,19 @@
         <option value="4">Option 4</option>
       </select>
       <label for="correctOption">Correct Option</label>
-
-      <div id="question-list"></div>
-
       <input type="submit" value="Submit" style="font-size: 20px" />
+      <input type="text" id="searchInput" placeholder="Search question..." />
+      <button type="button" onclick="addQuestion()">Add Question</button>
 
-      <button type="button" onclick="addQuestion()" style="display: none">
-        Add Question
+      <button type="button" onclick="filterQuestions()">
+        Filter Questions
       </button>
+
       <button type="button" onclick="randomSort()">Random Sort</button>
       <button type="button" onclick="alphabeticalSort()">
         Alphabetical Sort
       </button>
+      <div class="quiz-list" id="quizList" style="display: none"></div>
     </form>
 
     <div id="player-section">
