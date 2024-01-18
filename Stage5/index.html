@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2
+      style="
+        color: white;
+        margin-top: none;
+        margin-bottom: 750px;
+        text-align: left;
+        align-items: center;
+        position: fixed;
+      "
+    >
+      Quiz Game
+    </h2>
+
+    <form id="questionForm">
+      <label for="question">Question</label>
+      <input type="text" id="question" class="question" required />
+
+      <label for="option1">Option 1</label>
+      <input type="text" id="option1" class="option" required />
+
+      <label for="option2">Option 2</label>
+      <input type="text" id="option2" class="option" required />
+
+      <label for="option3">Option 3</label>
+      <input type="text" id="option3" class="option" required />
+
+      <label for="option4">Option 4</label>
+      <input type="text" id="option4" class="option" required />
+
+      <select id="correctOption" required>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+      </select>
+      <label for="correctOption">Correct Option</label>
+      <input type="submit" value="Submit" style="font-size: 20px" />
+      <input type="text" id="searchInput" placeholder="Search question..." />
+      <button type="button" onclick="addQuestion()">Add Question</button>
+
+      <button type="button" onclick="filterQuestions()">
+        Filter Questions
+      </button>
+
+      <button type="button" onclick="randomSort()">Random Sort</button>
+      <button type="button" onclick="alphabeticalSort()">
+        Alphabetical Sort
+      </button>
+      <div class="quiz-list" id="quizList" style="display: none"></div>
+    </form>
+
+    <div id="player-section">
+      <h2 style="color: white">Player Section</h2>
+      <input type="text" id="player1Name" placeholder="Player 1 Name" />
+      <input type="text" id="player2Name" placeholder="Player 2 Name" />
+      <button type="button" onclick="startQuiz()">Start Quiz</button>
+
+      <div id="players">
+        <div id="player1" style="color: white; display: none">
+          <span id="player1name" style="color: white">...</span>
+          <span id="score1" style="color: white">0</span>
+          <button onclick="updateScore(1, true)">Correct</button>
+          <button onclick="updateScore(1, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput1"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+
+        <div id="player2" style="color: white; display: none">
+          <span id="player2name" style="color: white"></span>
+          <span id="score2" style="color: white">0</span>
+          <button onclick="updateScore(2, true)">Correct</button>
+          <button onclick="updateScore(2, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput2"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+      </div>
+
+      <div id="quiz-end">Quiz Ended! <span id="winner"></span></div>
+
+      <audio
+        id="correctSound"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a"
+        preload="auto"
+      ></audio>
+      <audio
+        id="wrongSound"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a"
+        preload="auto"
+      ></audio>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
