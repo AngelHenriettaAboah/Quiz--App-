@@ -24,6 +24,7 @@ function addQuestion() {
     question,
     options: [option1, option2, option3, option4],
     correctAnswer,
+    revealed: false,
   };
 
   questionsArray.push(quizItem);
@@ -82,10 +83,11 @@ function updateQuizList() {
   });
 }
 
-function revealAnswer(index) {
-  // Function to reveal correct answer for the question at the given index
-  const correctOption = quizList[index].correctOption;
-  alert(`The correct answer is: ${correctOption}`);
+function revealCorrectOption() {
+  question.forEach((q) => {
+    q.revealed = true;
+  });
+  displayQuestions();
 }
 
 function clearForm() {
