@@ -109,11 +109,6 @@ button:hover {
   margin-bottom: 10px;
 }
 
-.question-list {
-  list-style-type: none;
-  padding: 0;
-}
-
 .question {
   margin-bottom: 10px;
 }
@@ -202,6 +197,7 @@ input {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  list-style: none;
 }
 
 .option {

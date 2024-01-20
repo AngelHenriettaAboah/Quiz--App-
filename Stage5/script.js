@@ -12,17 +12,6 @@ const player2 = {
   scoreDisplay: document.getElementById("score2"),
 };
 
-function updateQuestionList() {
-  const questionList = document.getElementById("questionList");
-  questionList.innerHTML = "";
-
-  questionsArray.forEach((q, index) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = `Q${index + 1}: ${q.question}`;
-    questionList.appendChild(listItem);
-  });
-}
-
 function addQuestion() {
   const question = document.getElementById("question").value;
   const option1 = document.getElementById("option1").value;
@@ -39,6 +28,8 @@ function addQuestion() {
 
   questionsArray.push(quizItem);
   displayQuestions();
+  updateQuizList();
+  clearForm();
 }
 
 function displayQuestions() {
@@ -47,7 +38,7 @@ function displayQuestions() {
 
   questionsArray.forEach((item, index) => {
     const div = document.createElement("div");
-    div.className = "quiz-item";
+    div.className = "quiz-list";
 
     const questionText = document.createElement("p");
     questionText.textContent = `Q${index + 1}: ${item.question}`;
@@ -57,7 +48,8 @@ function displayQuestions() {
     item.options.forEach((option, optionIndex) => {
       const li = document.createElement("li");
       li.textContent = `Option ${optionIndex + 1}: ${option}`;
-      if (optionIndex + 1 === parseInt(item.correctAnswer.slice(-1))) {
+      if (option == item.correctAnswer.slice(1)) {
+        // if correct answer to question must be displayed then remove .slice(1) //
         li.className = "correct-answer";
       } else {
         li.className = "wrong-answer";
@@ -68,6 +60,36 @@ function displayQuestions() {
 
     quizList.appendChild(div);
   });
+}
+
+function updateQuizList() {
+  const quizListContainer = document.getElementById("quizList");
+  quizListContainer.innerHTML = "";
+
+  quizList.forEach((question, index) => {
+    const quizElement = document.createElement("div");
+    quizElement.innerHTML = `
+        <p>Question ${index + 1}: ${question.question}</p>
+        <ul>
+          <li>${question.options[0]}</li>
+          <li>${question.options[1]}</li>
+          <li>${question.options[2]}</li>
+          <li>${question.options[3]}</li>
+        </ul>
+        <button onclick="revealAnswer(${index})">Reveal Answer</button>
+      `;
+    quizListContainer.appendChild(quizElement);
+  });
+}
+
+function revealAnswer(index) {
+  // Function to reveal correct answer for the question at the given index
+  const correctOption = quizList[index].correctOption;
+  alert(`The correct answer is: ${correctOption}`);
+}
+
+function clearForm() {
+  document.getElementById("questionForm").reset();
 }
 
 function filterQuestions() {
@@ -198,13 +220,13 @@ async function fetchQuestions() {
       "https://raw.githubusercontent.com/AngelHenriettaAboah/AngelHenriettaAboah.github.io/main/json-api/data.json"
     );
     let data = await response.json();
-    return data.map((item) => ({
+    questionsArray = data.map((item) => ({
       question: item.question,
       options: item.options.map((opt) => opt.option),
       correctAnswer: item.correctAnswer,
     }));
+    displayQuestions();
   } catch (error) {
     console.error("Error fetching questions:", error);
-    return [];
   }
 }

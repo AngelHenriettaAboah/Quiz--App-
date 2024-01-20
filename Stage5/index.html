@@ -11,7 +11,7 @@
       style="
         color: white;
         margin-top: none;
-        margin-bottom: 750px;
+        margin-bottom: 1000px;
         text-align: left;
         align-items: center;
         position: fixed;
@@ -45,7 +45,9 @@
       <label for="correctOption">Correct Option</label>
       <input type="submit" value="Submit" style="font-size: 20px" />
       <input type="text" id="searchInput" placeholder="Search question..." />
-      <button type="button" onclick="addQuestion()">Add Question</button>
+      <button type="button" onclick="addQuestion()" style="display: none">
+        Add Question
+      </button>
 
       <button type="button" onclick="filterQuestions()">
         Filter Questions
@@ -55,7 +57,7 @@
       <button type="button" onclick="alphabeticalSort()">
         Alphabetical Sort
       </button>
-      <div class="quiz-list" id="quizList" style="display: none"></div>
+      <div class="quiz-list" id="quizList"></div>
     </form>
 
     <div id="player-section">
