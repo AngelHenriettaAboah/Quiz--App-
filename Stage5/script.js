@@ -49,7 +49,7 @@ function displayQuestions() {
     item.options.forEach((option, optionIndex) => {
       const li = document.createElement("li");
       li.textContent = `Option ${optionIndex + 1}: ${option}`;
-      if (option == item.correctAnswer.slice(1)) {
+      if (option == item.correctAnswer && item.revealed) {
         // if correct answer to question must be displayed then remove .slice(1) //
         li.className = "correct-answer";
       } else {
@@ -84,7 +84,7 @@ function updateQuizList() {
 }
 
 function revealCorrectOption() {
-  question.forEach((q) => {
+  questionsArray.forEach((q) => {
     q.revealed = true;
   });
   displayQuestions();
