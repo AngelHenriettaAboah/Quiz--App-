@@ -12,6 +12,8 @@ const player2 = {
   scoreDisplay: document.getElementById("score2"),
 };
 
+//retrieves value from the form to create a quiz item
+
 function addQuestion() {
   const question = document.getElementById("question").value;
   const option1 = document.getElementById("option1").value;
@@ -32,6 +34,8 @@ function addQuestion() {
   updateQuizList();
   clearForm();
 }
+
+// display questions through question array
 
 function displayQuestions() {
   const quizList = document.getElementById("quizList");
@@ -63,6 +67,8 @@ function displayQuestions() {
   });
 }
 
+// updates player scores
+
 function updateQuizList() {
   const quizListContainer = document.getElementById("quizList");
   quizListContainer.innerHTML = "";
@@ -83,6 +89,8 @@ function updateQuizList() {
   });
 }
 
+// reveal the  correct option
+
 function revealCorrectOption() {
   questionsArray.forEach((q) => {
     q.revealed = true;
@@ -90,9 +98,13 @@ function revealCorrectOption() {
   displayQuestions();
 }
 
+//clear the form
+
 function clearForm() {
   document.getElementById("questionForm").reset();
 }
+
+// filter questions based on search input
 
 function filterQuestions() {
   const searchInput = document
@@ -106,6 +118,8 @@ function filterQuestions() {
   questionsArray.push(...filteredQuestions);
   displayQuestions(); //optional parameter could be empty or filled for example filteredQuestion//
 }
+
+//start the quiz
 
 function startQuiz() {
   const player1Name = document.getElementById("player1Name").value.trim();
@@ -142,6 +156,8 @@ function startQuiz() {
   document.getElementById("scoreInput2").disabled = false;
 }
 
+//updates Player score
+
 function updateScore(playerNumber, isCorrect) {
   const currentPlayer = playerNumber === 1 ? player1 : player2;
   const otherPlayer = playerNumber === 1 ? player2 : player1;
@@ -165,6 +181,8 @@ function updateScore(playerNumber, isCorrect) {
   }
 }
 
+//end the quiz
+
 function endQuiz() {
   document.getElementById("quiz-end").style.display = "block";
 
@@ -179,6 +197,8 @@ function endQuiz() {
   document.getElementById("scoreInput1").disabled = true;
   document.getElementById("scoreInput2").disabled = true;
 }
+
+//correct and wrong sounds are played when updating scores
 
 function playSound(soundId) {
   const sound = document.getElementById(soundId);
@@ -215,6 +235,8 @@ function alphabeticalSort() {
   questionsArray.sort((a, b) => a.question.localeCompare(b.question));
   displayQuestions();
 }
+
+//asynchronous fetching of questions
 
 async function fetchQuestions() {
   try {

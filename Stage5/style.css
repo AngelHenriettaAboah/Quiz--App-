@@ -83,10 +83,12 @@ button:hover {
 
 .correct-answer {
   background-color: #8fdb87; /* Green */
+  color: white;
 }
 
 .wrong-answer {
   background-color: #ff8f8f; /* Red */
+  color: white;
 }
 
 .filter-input {
@@ -229,4 +231,8 @@ input {
 
 audio {
   display: none;
+}
+
+ul {
+  list-style-type: none;
 }
