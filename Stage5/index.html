@@ -8,7 +8,9 @@
   </head>
   <body>
     <form id="questionForm">
-      <h2 style="color: aliceblue">Quiz Questions</h2>
+      <h2 style="color: aliceblue; margin-bottom: 10px; text-align: center">
+        Quiz Questions
+      </h2>
       <div class="quiz-list" id="quizList" style="color: aliceblue"></div>
       <input type="text" id="searchInput" placeholder="Search question..." />
       <button type="button" onclick="addQuestion()" style="display: none">
@@ -30,7 +32,7 @@
     </form>
 
     <div id="player-section">
-      <h2 style="color: white">Who is playing?</h2>
+      <h2 style="color: white; margin-bottom: 10px">Who is playing?</h2>
       <input type="text" id="player1Name" placeholder="Player 1 Name" />
       <input type="text" id="player2Name" placeholder="Player 2 Name" />
       <button type="button" onclick="startQuiz()">Start Quiz</button>

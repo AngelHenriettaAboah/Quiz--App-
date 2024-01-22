@@ -54,7 +54,6 @@ function displayQuestions() {
       const li = document.createElement("li");
       li.textContent = `Option ${optionIndex + 1}: ${option}`;
       if (option == item.correctAnswer && item.revealed) {
-        // if correct answer to question must be displayed then remove .slice(1) //
         li.className = "correct-answer";
       } else {
         li.className = "wrong-answer";
