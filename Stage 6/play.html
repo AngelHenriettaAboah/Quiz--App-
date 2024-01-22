@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="play.css" />
+  </head>
+  <body>
+    <div id="player-section">
+      <h2 style="color: white; margin-bottom: 10px">Who is playing?</h2>
+      <input type="text" id="player1Name" placeholder="Player 1 Name" />
+      <input type="text" id="player2Name" placeholder="Player 2 Name" />
+      <button type="button" onclick="startQuiz()">Start Quiz</button>
+
+      <div id="players">
+        <div id="player1" style="color: white; display: none">
+          <span id="player1name" style="color: white">...</span>
+          <span id="score1" style="color: white">0</span>
+          <button onclick="updateScore(1, true)">Correct</button>
+          <button onclick="updateScore(1, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput1"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+
+        <div id="player2" style="color: white; display: none">
+          <span id="player2name" style="color: white"></span>
+          <span id="score2" style="color: white">0</span>
+          <button onclick="updateScore(2, true)">Correct</button>
+          <button onclick="updateScore(2, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput2"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+      </div>
+
+      <div id="quiz-end" style="color: white">
+        Quiz Ended! <span id="winner" style="color: white"></span>
+      </div>
+
+      <audio
+        id="correctSound"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a"
+        preload="auto"
+      ></audio>
+      <audio
+        id="wrongSound"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a"
+        preload="auto"
+      ></audio>
+    </div>
+
+    <form id="questionForm">
+      <h2 style="color: aliceblue; margin-bottom: 10px; text-align: center">
+        Quiz Questions
+      </h2>
+      <div class="quiz-list" id="quizList" style="color: aliceblue"></div>
+      <input type="text" id="searchInput" placeholder="Search question..." />
+      <button type="button" onclick="addQuestion()" style="display: none">
+        Add Question
+      </button>
+
+      <button type="button" onclick="filterQuestions()">
+        Search Questions
+      </button>
+
+      <button type="button" onclick="randomSort()">Random Sort</button>
+      <button type="button" onclick="alphabeticalSort()">
+        Alphabetical Sort
+      </button>
+    </form>
+
+    <script src="play.js"></script>
+  </body>
+</html>
