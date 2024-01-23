@@ -142,7 +142,6 @@ body {
   font-family: "Arial", sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
   margin: 0;
   background-color: rgb(111, 66, 10);
   color: white;
@@ -174,11 +173,11 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   width: 150vh;
-  height: 2o0vh;
+  align-self: flex-start;
   justify-content: center;
   align-items: center;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 24px auto;
   border-radius: 8px;
 }
 
@@ -234,4 +233,8 @@ audio {
 
 ul {
   list-style-type: none;
+}
+
+#questionForm {
+  margin: 24px auto;
 }
