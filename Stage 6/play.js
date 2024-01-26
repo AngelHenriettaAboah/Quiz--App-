@@ -205,6 +205,19 @@ function endQuiz() {
   document.getElementById("scoreInput2").disabled = true;
 }
 
+const button = document.querySelector("#button");
+const canvas = document.querySelector("#confetti");
+
+const jsConfetti = new JSConfetti();
+
+button.addEventListener("click", () => {
+  jsConfetti
+    .addConfetti({
+      emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
+    })
+    .then(() => jsConfetti.addConfetti());
+});
+
 //correct and wrong sounds are played when updating scores
 
 function playSound(soundId) {
@@ -261,3 +274,5 @@ async function fetchQuestions() {
     console.error("Error fetching questions:", error);
   }
 }
+
+/* My App */

@@ -29,3 +29,5 @@ function validateAnswers() {
     }
   });
 }
+
+/* My App */

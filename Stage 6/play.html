@@ -47,7 +47,11 @@
 
       <div id="quiz-end" style="color: white">
         Quiz Ended! <span id="winner" style="color: white"></span>
+        <button id="button" class="button-s3" role="button">
+          Celebrate your win!!
+        </button>
       </div>
+      <canvas id="confetti"></canvas>
 
       <audio
         id="correctSound"
@@ -79,8 +83,89 @@
       <button type="button" onclick="alphabeticalSort()">
         Alphabetical Sort
       </button>
+
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="/play.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Reload Page</a
+          >
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="/app.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Previous Page</a
+          >
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="/index.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Play again</a
+          >
+        </div>
+      </div>
     </form>
 
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script src="play.js"></script>
   </body>
 </html>
+
+<!-- My App-->

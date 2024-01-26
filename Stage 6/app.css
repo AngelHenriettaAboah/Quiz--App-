@@ -173,7 +173,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   width: 150vh;
-  height: 2o0vh;
+
   justify-content: center;
   align-items: center;
   max-width: 500px;
@@ -235,3 +235,5 @@ audio {
   align-items: center;
   text-align: center;
 }
+
+/* My App */

@@ -12,13 +12,13 @@
       style="
         color: white;
         margin-top: none;
-        margin-bottom: 650px;
+        margin-bottom: 580px;
         text-align: left;
         align-items: center;
         position: fixed;
       "
     >
-      Create a Quiz
+      Teaser Alert! Create a Quiz
     </h1>
 
     <form id="quizForm">
@@ -42,12 +42,13 @@
       </select>
       <br />
 
-      <button type="button" onclick="randomizeOptions()">
-        Randomize Options
-      </button>
-      <br /><br />
+      <button type="button" onclick="randomizeOptions()">Sort Randomly</button>
 
-      <input type="submit" value="Submit" />
+      <input
+        type="submit"
+        value="Submit"
+        style="width: 100%; font-size: 20px"
+      />
       <div class="container">
         <div id="home" class="flex-center flex-column">
           <a
@@ -55,18 +56,19 @@
             href="/play.html"
             style="
               font-size: 20px;
-              padding: 1rem 0;
+              padding: 10px 15px;
               width: 20rem;
               text-align: center;
               border: 0.1rem solid #56a5eb;
-              margin-bottom: 3rem;
+              margin-bottom: 10px;
               text-decoration: none;
               color: #56a5eb;
               background-color: white;
               align-items: center;
               display: flex;
               color: black;
-              text-align: center;
+              width: 100%;
+              justify-content: center;
             "
             >Continue playing</a
           >
@@ -76,3 +78,5 @@
     <script src="app.js"></script>
   </body>
 </html>
+
+<!--My App-->

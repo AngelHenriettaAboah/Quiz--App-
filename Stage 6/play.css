@@ -177,8 +177,9 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 500px;
-  margin: 24px auto;
+  margin: 100px auto;
   border-radius: 8px;
+  height: fit-content;
 }
 
 .question {
@@ -236,5 +237,7 @@ ul {
 }
 
 #questionForm {
-  margin: 24px auto;
+  margin: 100px auto;
 }
+
+/* My App */
