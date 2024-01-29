@@ -23,7 +23,7 @@ main {
 
 form {
   padding: 20px;
-  background-color: #750e40;
+  background: linear-gradient(454deg, #74a2ff, #ff53ee);
   width: 150vh;
   justify-content: center;
   align-items: center;
@@ -168,7 +168,7 @@ body {
 }
 
 #player-section {
-  background-color: #750e40;
+  background: linear-gradient(454deg, #74a2ff, #ffa953);
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;

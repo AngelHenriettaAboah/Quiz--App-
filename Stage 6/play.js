@@ -148,7 +148,8 @@ function startQuiz() {
   document.getElementById("player1Name").disabled = true;
   document.getElementById("player2Name").disabled = true;
 
-  document.getElementById("player-section").style.background = "#124a13";
+  document.getElementById("player-section").style.background =
+    "linear-gradient(454deg, #74a2ff, #ff53ee)";
 
   document.getElementById("quiz-end").style.display = "none";
 

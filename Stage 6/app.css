@@ -23,7 +23,7 @@ main {
 
 form {
   padding: 20px;
-  background-color: #750e40;
+  background: linear-gradient(454deg, #f374ff, #ffcb53);
   width: 150vh;
   justify-content: center;
   align-items: center;

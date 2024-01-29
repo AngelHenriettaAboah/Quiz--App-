@@ -12,7 +12,7 @@
       style="
         color: white;
         margin-top: none;
-        margin-bottom: 580px;
+        margin-bottom: 620px;
         text-align: left;
         align-items: center;
         position: fixed;
@@ -49,11 +49,22 @@
         value="Submit"
         style="width: 100%; font-size: 20px"
       />
+
+      <audio id="myAudio">
+        <source
+          src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3"
+          type="audio/mpeg"
+        />
+        Your browser does not support the audio element.
+      </audio>
+
+      <!-- Button Element -->
+      <button onclick="playAudio()">Play Audio</button>
       <div class="container">
         <div id="home" class="flex-center flex-column">
           <a
             class="btn-play"
-            href="/play.html"
+            href="play.html"
             style="
               font-size: 20px;
               padding: 10px 15px;
