@@ -75,17 +75,12 @@ button:hover {
 }
 
 /* Media Queries for Responsive Design */
-@media screen and (max-width: 600px) {
-  input {
-    width: 100%;
-  }
-}
 
 /* xs */
 
-@media (min-width: 475px) {
+@media (min-width: 220px) {
   .container {
-    max-width: 475px;
+    max-width: 220px;
   }
 }
 
