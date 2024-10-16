@@ -58,7 +58,7 @@ JS3 week3 - Classes, Promises advanced
 
 Project completion checklist ✅
 
- I can see a form to submit a question at the top of the page and a list of questions bellow it;
+ I can see a form to submit a question at the top of the page and a list of questions below it;
  when submitting a new question, I can see an indication where to submit the correct answer;
  the questions are displayed in a nice and readable way, and I can see a button to reveal the right answer for each question;
  I can sort the questions alphabetically;
