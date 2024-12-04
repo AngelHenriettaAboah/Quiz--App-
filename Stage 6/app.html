@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Question Form</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <h1
+      style="
+        color: white;
+        margin-top: none;
+        margin-bottom: 620px;
+        text-align: left;
+        align-items: center;
+        position: fixed;
+      "
+    >
+      Teaser Alert! Create a Quiz
+    </h1>
+
+    <form id="quizForm">
+      <label for="question">Question:</label>
+      <input type="text" id="question" name="question" required />
+      <br />
+
+      <label>Options:</label><br />
+      <input type="text" class="option" name="option1" required />
+      <input type="text" class="option" name="option2" required />
+      <input type="text" class="option" name="option3" required />
+      <input type="text" class="option" name="option4" required />
+      <br />
+
+      <label for="correctAnswer">Correct Answer:</label>
+      <select id="correctAnswer" name="correctAnswer" required>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+        <option value="option4">Option 4</option>
+      </select>
+      <br />
+
+      <button type="button" onclick="randomizeOptions()">Sort Randomly</button>
+
+      <input
+        type="submit"
+        value="Submit"
+        style="width: 100%; font-size: 20px"
+      />
+
+      <audio id="myAudio">
+        <source
+          src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3"
+          type="audio/mpeg"
+        />
+        Your browser does not support the audio element.
+      </audio>
+
+      <!-- Button Element -->
+      <button onclick="playAudio()">Play Audio</button>
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="play.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Continue playing</a
+          >
+        </div>
+      </div>
+    </form>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!--My App-->

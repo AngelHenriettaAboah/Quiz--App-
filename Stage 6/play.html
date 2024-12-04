@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="play.css" />
+  </head>
+  <body>
+    <div id="player-section">
+      <h2 style="color: white; margin-bottom: 10px">Who is playing?</h2>
+      <input type="text" id="player1Name" placeholder="Player 1 Name" />
+      <input type="text" id="player2Name" placeholder="Player 2 Name" />
+      <button type="button" onclick="startQuiz()">Start Quiz</button>
+
+      <div id="players">
+        <div id="player1" style="color: white; display: none">
+          <span id="player1name" style="color: white">...</span>
+          <span id="score1" style="color: white">0</span>
+          <button onclick="updateScore(1, true)">Correct</button>
+          <button onclick="updateScore(1, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput1"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+
+        <div id="player2" style="color: white; display: none">
+          <span id="player2name" style="color: white"></span>
+          <span id="score2" style="color: white">0</span>
+          <button onclick="updateScore(2, true)">Correct</button>
+          <button onclick="updateScore(2, false)">Wrong</button>
+          <input
+            type="number"
+            class="score-input"
+            id="scoreInput2"
+            value="0"
+            min="0"
+            max="10"
+          />
+        </div>
+      </div>
+
+      <div id="quiz-end" style="color: white">
+        Quiz Ended! <span id="winner" style="color: white"></span>
+        <button id="button" class="button-s3" role="button">
+          Celebrate your win!!
+        </button>
+      </div>
+      <canvas id="confetti"></canvas>
+
+      <audio
+        id="correctSound"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a"
+        preload="auto"
+      ></audio>
+      <audio
+        id="wrongSound"
+        src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a"
+        preload="auto"
+      ></audio>
+    </div>
+
+    <form id="questionForm">
+      <h2 style="color: aliceblue; margin-bottom: 10px; text-align: center">
+        Quiz Questions
+      </h2>
+      <div class="quiz-list" id="quizList" style="color: aliceblue"></div>
+      <input type="text" id="searchInput" placeholder="Search question..." />
+      <button type="button" onclick="addQuestion()" style="display: none">
+        Add Question
+      </button>
+
+      <button type="button" onclick="filterQuestions()">
+        Search Questions
+      </button>
+
+      <button type="button" onclick="randomSort()">Random Sort</button>
+      <button type="button" onclick="alphabeticalSort()">
+        Alphabetical Sort
+      </button>
+
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="play.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Reload Page</a
+          >
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="app.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Go Back</a
+          >
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="home" class="flex-center flex-column">
+          <a
+            class="btn-play"
+            href="index.html"
+            style="
+              font-size: 20px;
+              padding: 10px 15px;
+              width: 20rem;
+              text-align: center;
+              border: 0.1rem solid #56a5eb;
+              margin-bottom: 10px;
+              text-decoration: none;
+              color: #56a5eb;
+              background-color: white;
+              align-items: center;
+              display: flex;
+              color: black;
+              width: 100%;
+              justify-content: center;
+            "
+            >Play again</a
+          >
+        </div>
+      </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="play.js"></script>
+  </body>
+</html>
+
+<!-- My App-->

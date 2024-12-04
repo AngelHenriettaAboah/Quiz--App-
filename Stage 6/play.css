@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #090808;
+  border-radius: 4px;
+}
+
+header {
+  text-align: center;
+  background-color: #2196f3;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+form {
+  padding: 20px;
+  background: linear-gradient(454deg, #74a2ff, #ff53ee);
+  width: 150vh;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  border-radius: 4px;
+  color: white;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: antiquewhite;
+}
+
+/* Media Queries for Responsive Design */
+
+/* xs */
+
+@media (min-width: 220px) {
+  .container {
+    max-width: 220px;
+  }
+}
+
+/* sm */
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+/* md */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+/* lg */
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+/* xl */
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* 2xl */
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+.correct-answer {
+  background-color: #8fdb87; /* Green */
+  color: white;
+}
+
+.wrong-answer {
+  background-color: #ff8f8f; /* Red */
+  color: white;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  border-radius: 4px;
+  display: flex;
+  text-align: left;
+}
+
+.filter-input button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+.player-score {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.player-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#player1-score,
+#player2-score {
+  width: 50px;
+  text-align: center;
+}
+
+#winner-message {
+  font-size: 18px;
+  font-weight: bold;
+  color: green;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background: linear-gradient(454deg, #9574ff, #53ff92);
+  color: white;
+}
+
+#quiz-form {
+  width: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quiz-list {
+  width: 400px;
+  background-color: #61dafb;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#player-section {
+  background: linear-gradient(454deg, #74a2ff, #ffa953);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 150vh;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  margin: 100px auto;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+input {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.option {
+  margin-bottom: 5px;
+}
+
+#quiz-list button,
+#quiz-form button,
+#player-section button {
+  font-size: 16px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.score-input {
+  width: 40px;
+  text-align: center;
+}
+
+#quiz-end {
+  display: none;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+audio {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#questionForm {
+  margin: 100px auto;
+}
+
+/* My App */
